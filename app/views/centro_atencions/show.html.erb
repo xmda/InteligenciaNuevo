@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Categoria:</strong>
+  <%= @centro_atencion.categoria %>
+</p>
+
+<p>
+  <strong>Servicio:</strong>
+  <%= @centro_atencion.servicio %>
+</p>
+
+<%= link_to 'Edit', edit_centro_atencion_path(@centro_atencion) %> |
+<%= link_to 'Back', centro_atencions_path %>

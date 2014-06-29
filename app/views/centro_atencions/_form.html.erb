@@ -1,0 +1,35 @@
+<%= form_for(@centro_atencion) do |f| %>
+  <% if @centro_atencion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@centro_atencion.errors.count, "error") %> prohibited this centro_atencion from being saved:</h2>
+
+      <ul>
+      <% @centro_atencion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="field">
+
+    <%= xxx = text_field :cliente, :nombre %>
+
+    <%= session[:cliente]=params[:cliente]%>
+    <%=  params[:clie]=session[:clie] %>
+
+	  <% @b = Classifier::Bayes.new 'soporte', 'reparacion' %>
+	  <% @b.train_soporte "para soporte y asistencia" %>
+	  <% @b.train_reparacion "reparacion y mantemiento de equipo de computo" %>
+	  <%= f.label :servicio %><br>
+	  <%= @texto = f.text_field :servicio, :value => "necesito reparar mi equipo de computo" %>
+  </div>
+
+  <div class="field">
+  	<%= f.label :categoria %><br>
+  	<% @u = @b.classify @texto %>
+    <%= f.text_field :categoria, :value => @u %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>  
+<% end %>

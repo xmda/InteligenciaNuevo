@@ -1,0 +1,27 @@
+<h1>Centro de servicio</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Categoria</th>
+      <th>Servicio</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @centro_atencions.each do |centro_atencion| %>
+      <tr>
+        <td><%= centro_atencion.categoria %></td>
+        <td><%= centro_atencion.servicio %></td>
+        <td><%= link_to 'Ver', centro_atencion %></td>
+        <td><%= link_to 'Editar', edit_centro_atencion_path(centro_atencion) %></td>
+        <td><%= link_to 'Eliminar', centro_atencion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Servicio', new_centro_atencion_path %>

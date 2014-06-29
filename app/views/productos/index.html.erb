@@ -1,0 +1,23 @@
+<h1>Productos Parecidos</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Producto</th>
+      <th>Descripcion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @productos.each do |producto| %>
+      <tr>
+        <td><%= producto.productoName %></td>
+        <td><%= producto.descripcion %></td>
+        <td><%= link_to 'Mostrar', producto %></td>
+        <td><%= link_to 'Editar', edit_producto_path(producto) %></td>
+        <td><%= link_to 'Eliminar', producto, method: :delete, data: { confirm: 'Esta seguro de eliminar?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'Nueo Producto', new_producto_path %>
